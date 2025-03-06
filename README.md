@@ -4,7 +4,7 @@
 
 This repository aims to provide a simple way to get into developing nodes for n8n.
 
-I am making it because the documentation on building custom nodes is currently [outdated](https://github.com/n8n-io/n8n-nodes-starter/issues/62), and left many wondering how to get started.
+I am making it because the documentation on building custom nodes is currently [outdated](https://github.com/n8n-io/n8n-nodes-starter/issues/62), and left many [wondering how to get started](https://community.n8n.io/t/n8n-nodes-starter-example-switched-to-pnpm-does-not-match-tutorial/59031).
 
 It is outdated because :
 - It uses `npm` whereas `pnpm` is [now](https://github.com/n8n-io/n8n/pull/4429) the recommended package manager for n8n.
