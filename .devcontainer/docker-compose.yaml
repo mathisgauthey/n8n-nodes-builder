@@ -17,7 +17,7 @@ services:
       context: ../
       dockerfile: ./.devcontainer/Dockerfile
       args:
-        - N8N_VERSION=${N8N_VERSION}
+        - NODE_VERSION=${NODE_VERSION}
     depends_on:
       - n8n_db
     ports:

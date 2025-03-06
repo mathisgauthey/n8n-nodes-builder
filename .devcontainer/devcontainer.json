@@ -15,5 +15,7 @@
                 "mhutchie.git-graph"
             ]
         }
-    }
+    },
+    "postCreateCommand": "cd /workspace/n8n && corepack prepare --activate && pnpm install",
+    "postAttachCommand": "cd /workspace/n8n && pnpm build"
 }
