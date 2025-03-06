@@ -2,3 +2,5 @@
 .devcontainer/docker-compose.extends.yaml
 
 custom-nodes/
+
+node_modules/
