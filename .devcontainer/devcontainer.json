@@ -1,0 +1,19 @@
+{
+    "name": "n8n-nodes-builder",
+    "workspaceFolder": "/workspace",
+    "dockerComposeFile": [
+        "docker-compose.yaml",
+        "docker-compose.devcontainer.yaml",
+        "docker-compose.extends.yaml"
+    ],
+    "service": "n8n_web",
+    "shutdownAction": "stopCompose",
+    "overrideCommand": true,
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mhutchie.git-graph"
+            ]
+        }
+    }
+}

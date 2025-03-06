@@ -1,0 +1,42 @@
+services:
+  n8n_db:
+    image: postgres:${POSTGRES_VERSION}
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - n8n_db_data:/var/lib/postgresql/data/
+    ports:
+      - "${DB_PORT}:5432"
+    tty: true
+
+  n8n_web:
+    build:
+      context: ../
+      dockerfile: ./.devcontainer/Dockerfile
+      args:
+        - N8N_VERSION=${N8N_VERSION}
+    depends_on:
+      - n8n_db
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_web_data:/home/node/.n8n
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=${DB_HOST}
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_USER=${DB_USER}
+      - DB_POSTGRESDB_PASSWORD=${DB_PASSWORD}
+      - DB_POSTGRESDB_DATABASE=${DB_NAME}
+    env_file:
+      - .env
+    tty: true
+
+volumes:
+  n8n_web_data:
+  n8n_db_data:
+networks:
+  default:

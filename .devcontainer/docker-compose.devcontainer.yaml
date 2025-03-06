@@ -1,0 +1,4 @@
+services:
+  n8n_web:
+    volumes:
+      - ../:/workspace
