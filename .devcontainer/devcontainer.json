@@ -11,7 +11,8 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "mhutchie.git-graph"
+                "mhutchie.git-graph",
+                "eamodio.gitlens"
             ]
         }
     },
