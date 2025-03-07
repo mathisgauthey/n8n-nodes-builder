@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Change the owner of the .n8n directory to the node user
-chown node:node /home/node/.n8n
-
 # Create the /home/node/.n8n/custom directory if it doesn't exist
 mkdir -p /home/node/.n8n/custom
 

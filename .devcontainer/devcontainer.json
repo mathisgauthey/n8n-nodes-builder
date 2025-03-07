@@ -16,6 +16,6 @@
         }
     },
     "postCreateCommand": "cd /workspace/n8n && corepack prepare --activate && pnpm install",
-    "postStartCommand": "sudo bash /workspace/.devcontainer/link_custom_nodes.sh",
+    "postStartCommand": "bash /workspace/.devcontainer/link_custom_nodes.sh",
     "postAttachCommand": "cd /workspace/n8n && pnpm build"
 }
