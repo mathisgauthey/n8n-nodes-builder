@@ -19,12 +19,13 @@ And this is exactly what this repository is all about.
 ```text
 .
 ├── .devcontainers/
-│   ├── .env.example                        # Environment variables template file for docker-compose and odoo.conf variables
+│   ├── .env.example                        # Environment variables template file
 │   ├── Dockerfile                          # Dev container Dockerfile
 │   ├── devcontainer.json                   # Dev container configuration
-│   ├── docker-compose.extends.yaml         # Project specific docker-compose configuration (volume mounts for custom nodes...)
-│   ├── docker-compose.devcontainer.yaml    # Devcontainer specific docker-compose configuration (volume mount for workspace folder)     
-│   └── docker-compose.yaml                 # Main docker-compose configuration
+│   ├── docker-compose.devcontainer.yaml    # Devcontainer specific docker-compose
+│   ├── docker-compose.yaml                 # Main docker-compose configuration
+│   ├── init.sh                             # Init script to clone repos
+│   └── link_custom_nodes.sh                # Script to link custom nodes to n8n 
 ├── .vscode/
 │   └── launch.json                         # VSCode launch configuration
 ├── custom-nodes/
@@ -34,6 +35,8 @@ And this is exactly what this repository is all about.
 │   └── custom-node-2/
 │       ├── dist/                           # Custom node 2 build folder
 │       └── ...
+├── n8n/                                    # n8n source code             
+│   └── ...
 ├── .gitignore
 ├── LICENSE
 └── README.md
@@ -42,22 +45,17 @@ And this is exactly what this repository is all about.
 ## How to use
 
 1. Clone this repository and navigate to the root folder.
-2. Clone the [n8n-nodes-starter](https://github.com/n8n-io/n8n-nodes-starter) repository in the `custom-nodes` folder.
-3. Create a `docker-compose.extends.yaml` file in the `.devcontainers` folder to extend the main `docker-compose.yaml` file. This file could contain the volume mounts for your n8n nodes for example.
-
-    ```yaml
-    services:
-    n8n_web:
-        volumes:
-        - ../custom-nodes/n8n-nodes-starter/dist:/home/node/.n8n/custom/node_modules/n8n-nodes-starter
-    ```	
-
+2. **[Optionnal (done during the dev container creation process)]** Clone the [n8n repository](https://github.com/n8n-io/n8n) at the workspace root and the [n8n-nodes-starter repository](https://github.com/n8n-io/n8n-nodes-starter) in the `custom-nodes` folder. You could also execute the `.devcontainer/init.sh` script to do it for you.
 4. Create a `.env` file in the `.devcontainers` folder. You can use `.env.example` as a template.
    - Used for docker-compose [variable interpolation](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#interpolation-syntax)
    - Used as [`.env` file for the n8n container](https://docs.docker.com/reference/compose-file/services/#env_file)
-5. Just use `F1` and select `Dev Containers: Reopen in Container` in VSCode.
-6. Then press `F5` to start the n8n server in debug mode using `Launch n8n with debug` launch config, add breakpoint and start debugging.
-7. Use the terminal to navigate to your custom node folder and run `pnpm run build` to build your custom node.
+5. Use `F1` or `Ctrl+Shift+P` and select `Dev Containers: Reopen in Container` in VSCode. The first start it long (5m on my end) because it builds up n8n from source, but subsequent starts are a matter of seconds.
+6. Go to your custom node folder and run `pnpm install` to install dependencies.
+7. Still inside your custom node folder, run `pnpm build` to build your custom node.
+6. Then press `F5` to start the n8n server in debug mode using `Launch n8n with debug` launch config. 
+7. Add breakpoint to your custom node Typescript or n8n source code and start debugging !
+
+If you want to see changes in your custom nodes, you can run `pnpm run dev` in your custom node folder to watch for changes and rebuild automatically. You'll still need to restart the n8n server to see the changes thought, this is tracked in issue [#5](https://github.com/mathisgauthey/n8n-nodes-builder/issues/5).
 
 ## Inspirations
 
