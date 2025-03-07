@@ -5,91 +5,46 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
-            "request": "launch",
-            "name": "Jest: current file",
-            "program": "${workspaceFolder}/n8n/node_modules/.bin/jest",
-            "args": [
-                "${fileBasenameNoExtension}"
-            ],
-            "console": "integratedTerminal",
-            "windows": {
-                "program": "${workspaceFolder}/n8n/node_modules/jest/bin/jest"
-            }
-        },
-        {
-            "name": "Attach to running n8n",
-            "processId": "${command:PickProcess}",
-            "request": "attach",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "type": "node"
-        },
-        {
             "name": "Launch n8n with debug",
-            "program": "${workspaceFolder}/n8n/packages/cli/bin/n8n",
-            "cwd": "${workspaceFolder}/n8n/packages/cli/bin",
-            // "args": ["start", "--tunnel"],
+            "type": "node",
             "request": "launch",
+            "cwd": "${workspaceFolder}/n8n/packages/cli/bin",
+            "program": "${workspaceFolder}/n8n/packages/cli/bin/n8n",
+            "runtimeArgs": [
+                "--watch"
+            ],
+            "preLaunchTask": "Run pnpm run dev in each node folder",
+            // "console": "integratedTerminal",
+            "restart": true,
+            "autoAttachChildProcesses": true,
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "type": "node",
-            "env": {
-                // "N8N_PORT": "5679",
-            },
             "outputCapture": "std",
-            "killBehavior": "polite"
+            "killBehavior": "polite",
         },
         {
             "name": "Launch n8n CLI dev with debug",
-            "runtimeExecutable": "pnpm",
+            "type": "node",
+            "request": "launch",
             "cwd": "${workspaceFolder}/n8n/packages/cli",
+            "runtimeExecutable": "pnpm",
             "runtimeArgs": [
                 "run",
                 "buildAndDev",
-                "--",
-                "--inspect-brk"
             ],
+            "args": [
+                "--watch"
+            ],
+            "preLaunchTask": "Run pnpm run dev in each node folder",
             "console": "integratedTerminal",
             "restart": true,
             "autoAttachChildProcesses": true,
-            "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "type": "node",
-            "envFile": "${workspaceFolder}/n8n/.env",
             "outputCapture": "std",
             "killBehavior": "polite"
-        },
-        {
-            "name": "Debug CLI tests",
-            "cwd": "${workspaceFolder}/n8n/packages/cli",
-            "runtimeExecutable": "npm",
-            "args": [
-                "run",
-                "test"
-                // "--",
-                // "ActiveExecutions"
-            ],
-            "type": "node",
-            "request": "launch"
         }
     ]
-    /**
-		How this works:
-
-		This file gives VS Code the ability to start and debug n8n.
-		The editor is not debuggable from here.
-
-		The "Run and Debug" tab of your editor should display the "Launch n8n with debug" option.
-		This should start n8n and open a debug console. You can add breakpoints to
-		Parts of the code residing inside `cli`, `core`, `workflow` and `nodes-base` packages
-
-		You can also choose to "Attach to running n8n". This is useful if you
-		have n8n running in another terminal window and want to debug it.
-		Once you click to Debug, VS Code will prompt you to select a process to attach to.
-	*/
 }
