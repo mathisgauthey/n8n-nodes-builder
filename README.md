@@ -46,16 +46,15 @@ And this is exactly what this repository is all about.
 
 1. Clone this repository and navigate to the root folder.
 2. **[Optionnal (done during the dev container creation process)]** Clone the [n8n repository](https://github.com/n8n-io/n8n) at the workspace root and the [n8n-nodes-starter repository](https://github.com/n8n-io/n8n-nodes-starter) in the `custom-nodes` folder. You could also execute the `.devcontainer/init.sh` script to do it for you.
-4. Create a `.env` file in the `.devcontainers` folder. You can use `.env.example` as a template.
+3. Create a `.env` file in the `.devcontainers` folder. You can use `.env.example` as a template.
    - Used for docker-compose [variable interpolation](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#interpolation-syntax)
    - Used as [`.env` file for the n8n container](https://docs.docker.com/reference/compose-file/services/#env_file)
-5. Use `F1` or `Ctrl+Shift+P` and select `Dev Containers: Reopen in Container` in VSCode. The first start it long (5m on my end) because it builds up n8n from source, but subsequent starts are a matter of seconds.
-6. Go to your custom node folder and run `pnpm install` to install dependencies.
-7. Still inside your custom node folder, run `pnpm build` to build your custom node.
-6. Then press `F5` to start the n8n server in debug mode using `Launch n8n with debug` launch config. 
-7. Add breakpoint to your custom node Typescript or n8n source code and start debugging !
-
-If you want to see changes in your custom nodes, you can run `pnpm run dev` in your custom node folder to watch for changes and rebuild automatically. You'll still need to restart the n8n server to see the changes thought, this is tracked in issue [#5](https://github.com/mathisgauthey/n8n-nodes-builder/issues/5).
+4. Use `F1` or `Ctrl+Shift+P` and select `Dev Containers: Reopen in Container` in VSCode. The first start it long (5m on my end) because it builds up n8n from source, but subsequent starts are a matter of seconds.
+5. Go to your custom node folder and run `pnpm install` to install dependencies.
+6. Still inside your custom node folder, run `pnpm build` to build your custom node.
+7. **[Optinal (done as preLaunchTask inside `launch.json`)]** You can also run `pnpm dev` in a terminal to watch for changes and rebuild automatically.
+8. Then press `F5` to start the n8n server in debug mode using `Launch n8n with debug` launch config. It will run `pnpm dev` in the custom nodes folder and start the n8n server in debug mode. The server will automatically restart when you make changes to the n8n source code or your custom nodes thanks to the `--watch` directive.
+9. Add breakpoint to your custom node Typescript or n8n source code and start debugging !
 
 ## Inspirations
 
