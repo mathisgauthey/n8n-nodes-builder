@@ -2,11 +2,11 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Run pnpm run dev in each node folder",
+            "label": "Run pnpm i and pnpm run dev in each node folder",
             "type": "shell",
-            "command": "for d in /workspace/custom-nodes/*/ ; do (cd \"$d\" && pnpm run dev); done",
+            "command": "for d in /workspace/custom-nodes/*/ ; do (cd \"$d\" && pnpm i && pnpm run dev); done",
             "isBackground": true,
-            "problemMatcher": [],
+            "problemMatcher": []
         }
     ]
 }

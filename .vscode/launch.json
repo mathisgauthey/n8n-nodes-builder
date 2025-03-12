@@ -13,15 +13,15 @@
             "runtimeArgs": [
                 "--watch"
             ],
-            "preLaunchTask": "Run pnpm run dev in each node folder",
-            // "console": "integratedTerminal",
+            "preLaunchTask": "Run pnpm i and pnpm run dev in each node folder",
+            "console": "integratedTerminal",
             "restart": true,
             "autoAttachChildProcesses": true,
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "outputCapture": "std",
-            "killBehavior": "polite",
+            "killBehavior": "polite"
         },
         {
             "name": "Launch n8n CLI dev with debug",
@@ -31,12 +31,12 @@
             "runtimeExecutable": "pnpm",
             "runtimeArgs": [
                 "run",
-                "buildAndDev",
+                "buildAndDev"
             ],
             "args": [
                 "--watch"
             ],
-            "preLaunchTask": "Run pnpm run dev in each node folder",
+            "preLaunchTask": "Run pnpm i and pnpm run dev in each node folder",
             "console": "integratedTerminal",
             "restart": true,
             "autoAttachChildProcesses": true,
