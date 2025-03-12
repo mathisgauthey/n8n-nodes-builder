@@ -1,5 +1,7 @@
 .devcontainer/.env
 
+.idea/
+
 custom-nodes/
 
 n8n/
