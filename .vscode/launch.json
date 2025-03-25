@@ -28,9 +28,6 @@
       "request": "launch",
       "cwd": "${workspaceFolder}/n8n/packages/cli/bin",
       "program": "${workspaceFolder}/n8n/packages/cli/bin/n8n",
-      "runtimeArgs": [
-        "--watch"
-      ],
       "preLaunchTask": "Run pnpm i and pnpm run dev in each node folder",
       "console": "integratedTerminal",
       "restart": true,
@@ -50,9 +47,6 @@
       "runtimeArgs": [
         "run",
         "buildAndDev"
-      ],
-      "args": [
-        "--watch"
       ],
       "preLaunchTask": "Run pnpm i and pnpm run dev in each node folder",
       "console": "integratedTerminal",
