@@ -65,8 +65,10 @@ And this is exactly what this repository is all about.
    my end) because it builds up n8n from source, but subsequent starts are a matter of seconds.
 5. Go to your custom node folder and run `pnpm install` to install dependencies.
 6. Still inside your custom node folder, run `pnpm build` to build your custom node.
-7. **[Optinal (done as preLaunchTask inside `launch.json`)]** You can also run `pnpm dev` in a terminal to watch for changes and rebuild automatically.
-8. Then press `F5` to start the n8n server in debug mode using `Launch n8n with debug` launch config. It will run `pnpm dev` in the custom nodes folder and start the n8n server in debug mode. The server will automatically restart when you make changes to the n8n source code or your custom nodes thanks to the `--watch` directive.
+7. **[Optional (done as preLaunchTask inside `launch.json`)]** You can also run `pnpm dev` in a terminal to watch for
+   changes and rebuild automatically.
+8. Then press `F5` to start the n8n server in debug mode using `Start n8n` launch config. It will run `pnpm dev` in the
+   custom nodes folder and start the n8n server in debug mode.
 9. Add breakpoint to your custom node Typescript or n8n source code and start debugging !
 
 ## Inspirations
