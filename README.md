@@ -4,13 +4,21 @@
 
 This repository aims to provide a simple way to get into developing nodes for n8n.
 
-I am making it because the documentation on building custom nodes is currently [outdated](https://github.com/n8n-io/n8n-nodes-starter/issues/62), and left many [wondering how to get started](https://community.n8n.io/t/n8n-nodes-starter-example-switched-to-pnpm-does-not-match-tutorial/59031).
+I am making it because the documentation on building custom nodes is
+currently [outdated](https://github.com/n8n-io/n8n-nodes-starter/issues/62), and left
+many [wondering how to get started](https://community.n8n.io/t/n8n-nodes-starter-example-switched-to-pnpm-does-not-match-tutorial/59031).
 
 It is outdated because :
-- It uses `npm` whereas `pnpm` is [now](https://github.com/n8n-io/n8n/pull/4429) the recommended package manager for n8n.
-- It uses `npm link` to link nodes but making it work with `pnpm` is [undocumented](https://community.n8n.io/t/issues-creating-custom-nodes/81250/4) and people seems to rather [use docker](https://community.n8n.io/t/need-help-with-testing-custom-node-in-dev-container/57520/5) to make it work flawlessly.
 
-Let's add that n8n itself is [using devcontainers](https://github.com/n8n-io/n8n/tree/master/.devcontainer) to help maintainers make contributions easier, so why not use it to develop custom nodes as well?
+- It uses `npm` whereas `pnpm` is [now](https://github.com/n8n-io/n8n/pull/4429) the recommended package manager for
+  n8n.
+- It uses `npm link` to link nodes but making it work with `pnpm`
+  is [undocumented](https://community.n8n.io/t/issues-creating-custom-nodes/81250/4) and people seems to
+  rather [use docker](https://community.n8n.io/t/need-help-with-testing-custom-node-in-dev-container/57520/5) to make it
+  work flawlessly.
+
+Let's add that n8n itself is [using devcontainers](https://github.com/n8n-io/n8n/tree/master/.devcontainer) to help
+maintainers make contributions easier, so why not use it to develop custom nodes as well?
 
 And this is exactly what this repository is all about.
 
@@ -45,11 +53,16 @@ And this is exactly what this repository is all about.
 ## How to use
 
 1. Clone this repository and navigate to the root folder.
-2. **[Optionnal (done during the dev container creation process)]** Clone the [n8n repository](https://github.com/n8n-io/n8n) at the workspace root and the [n8n-nodes-starter repository](https://github.com/n8n-io/n8n-nodes-starter) in the `custom-nodes` folder. You could also execute the `.devcontainer/init.sh` script to do it for you.
+2. **[Optional (done during the dev container creation process)]** Clone
+   the [n8n repository](https://github.com/n8n-io/n8n) at the workspace root and
+   the [n8n-nodes-starter repository](https://github.com/n8n-io/n8n-nodes-starter) in the `custom-nodes` folder. You
+   could also execute the `.devcontainer/init.sh` script to do it for you.
 3. Create a `.env` file in the `.devcontainers` folder. You can use `.env.example` as a template.
-   - Used for docker-compose [variable interpolation](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#interpolation-syntax)
-   - Used as [`.env` file for the n8n container](https://docs.docker.com/reference/compose-file/services/#env_file)
-4. Use `F1` or `Ctrl+Shift+P` and select `Dev Containers: Reopen in Container` in VSCode. The first start it long (5m on my end) because it builds up n8n from source, but subsequent starts are a matter of seconds.
+    - Used for
+      docker-compose [variable interpolation](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#interpolation-syntax)
+    - Used as [`.env` file for the n8n container](https://docs.docker.com/reference/compose-file/services/#env_file)
+4. Use `F1` or `Ctrl+Shift+P` and select `Dev Containers: Reopen in Container` in VSCode. The first start it long (5m on
+   my end) because it builds up n8n from source, but subsequent starts are a matter of seconds.
 5. Go to your custom node folder and run `pnpm install` to install dependencies.
 6. Still inside your custom node folder, run `pnpm build` to build your custom node.
 7. **[Optinal (done as preLaunchTask inside `launch.json`)]** You can also run `pnpm dev` in a terminal to watch for changes and rebuild automatically.
