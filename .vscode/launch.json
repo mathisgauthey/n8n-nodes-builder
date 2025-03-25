@@ -1,50 +1,68 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Launch n8n with debug",
-            "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceFolder}/n8n/packages/cli/bin",
-            "program": "${workspaceFolder}/n8n/packages/cli/bin/n8n",
-            "runtimeArgs": [
-                "--watch"
-            ],
-            "preLaunchTask": "Run pnpm i and pnpm run dev in each node folder",
-            "console": "integratedTerminal",
-            "restart": true,
-            "autoAttachChildProcesses": true,
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "outputCapture": "std",
-            "killBehavior": "polite"
-        },
-        {
-            "name": "Launch n8n CLI dev with debug",
-            "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceFolder}/n8n/packages/cli",
-            "runtimeExecutable": "pnpm",
-            "runtimeArgs": [
-                "run",
-                "buildAndDev"
-            ],
-            "args": [
-                "--watch"
-            ],
-            "preLaunchTask": "Run pnpm i and pnpm run dev in each node folder",
-            "console": "integratedTerminal",
-            "restart": true,
-            "autoAttachChildProcesses": true,
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "outputCapture": "std",
-            "killBehavior": "polite"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Start n8n",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/n8n",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "run",
+        "start"
+      ],
+      "preLaunchTask": "Run pnpm i and pnpm run dev in each node folder",
+      "console": "integratedTerminal",
+      "restart": true,
+      "autoAttachChildProcesses": true,
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "outputCapture": "std",
+      "killBehavior": "polite",
+      "sourceMaps": true
+    },
+    {
+      "name": "Launch n8n with debug",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/n8n/packages/cli/bin",
+      "program": "${workspaceFolder}/n8n/packages/cli/bin/n8n",
+      "runtimeArgs": [
+        "--watch"
+      ],
+      "preLaunchTask": "Run pnpm i and pnpm run dev in each node folder",
+      "console": "integratedTerminal",
+      "restart": true,
+      "autoAttachChildProcesses": true,
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "outputCapture": "std",
+      "killBehavior": "polite"
+    },
+    {
+      "name": "Launch n8n CLI dev with debug",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/n8n/packages/cli",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "run",
+        "buildAndDev"
+      ],
+      "args": [
+        "--watch"
+      ],
+      "preLaunchTask": "Run pnpm i and pnpm run dev in each node folder",
+      "console": "integratedTerminal",
+      "restart": true,
+      "autoAttachChildProcesses": true,
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "outputCapture": "std",
+      "killBehavior": "polite"
+    }
+  ]
 }
